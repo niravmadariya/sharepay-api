@@ -7,12 +7,17 @@ SharePay is an application to split the bills among friends.
 
 APIs are created in core PHP (No Language Libraries used).
 
+### Security 
+Not Storing any user data in raw format
+
+Created custom crypto provider class to encerypt data and also using AES256 encryption for encrypting some data.
+
 ## The stack & building from source 
 APIs are built upon PHP 7.1
 
 IIS Server
 
-Library - db_pdo.inc for database transactions 
+Library - <a href="https://github.com/niravmadariya/sharepay-api/blob/master/php/db_pdo.inc">db_pdo.inc</a> from <a href="https://github.com/bevhost/phplib/blob/master/inc/db_pdo.inc">db_pdo.inc</a> for database transactions 
 
 ## Building the Project
 
@@ -23,17 +28,17 @@ var $Database = "";
 var $User     = "";
 var $Password = "";
 var $charset  = "utf8";
+
+
+// Replace your own AES 256 Encryption key
+$_CONFIG["aes_enc_key"] = "Your AES 256 Key";
+
+// Replace with your own salt to encrypt data 
+$_CONFIG["crypto_provider_salt"] = "Your Encryption Salt";
+
 ```
 
-2. changes in lob/Crypto_provider.inc - add your own salt
-```
-$salt = "YourSalt";
-```
-
-3. changes in api/login.php - add your own AES-256 encryption key for encryption
-```
-$aes = new AES($data[0]["password"],"YourKey",256);
-```
+4. changes in Database - import users.sql
 
 #### For now this project only runs on IIS (soon there will be update with apache configurations)
 #### Also, for now there is only login API available, soon there will be an update for other APIs.
