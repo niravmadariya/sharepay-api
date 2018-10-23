@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 class DB_Sql {
   
   /* public: connection parameters */
@@ -240,6 +244,43 @@ class DB_Sql {
     }
 
     return $this->sth;
+  }
+    
+  // public: perform a query with dynamic data binding 
+  function query_bind($Query_String, $param, $retries=1) {
+    if ($Query_String == "") {
+      /* The empty query string is passed on from the constructor,
+       * when calling the class without a query, e.g. in situations
+       * like these: '$db = new DB_Sql_Subclass;'
+       */
+      if ($this->Debug) echo "no query specified.";
+      return 0;
+    }
+    $this->prepare($Query_String);
+    
+    if (!$this->connect()) { return 0; };
+	if (!is_array($param)) $param = func_get_args();
+	if (!((bool)count(array_filter(array_keys($param), 'is_string')))) { // this is NOT an associative array, so we cannot bindValue or bindParams
+		if (!$status = $this->sth->execute($param)) {
+			if ($this->Debug) var_dump($param);
+			$this->halt(array_search(null,$param)?"Null Parameter":"Cannot Execute");
+		}
+	} else {
+		foreach ($param as $key => &$val) {
+			if (is_string($val)) {
+				$this->sth->bindParam($key, $val, PDO::PARAM_STR);
+			} else if(is_numeric($val)){
+			    $this->sth->bindParam($key, $val, PDO::PARAM_INT);
+			} else if(is_bool($val)){
+			    $this->sth->bindParam($key, $val, PDO::PARAM_BOOL);
+			} else {
+				$this->sth->bindParam($key, $val, PDO::PARAM_NULL);
+			}
+		}
+		if (!$status = $this->sth->execute()) $this->halt(array_search(null,$param)?"Null Parameter":"Cannot Execute");
+	}
+	$this->getErrorInfo();
+	return $status;
   }
 
   /* public get 1 column */
