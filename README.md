@@ -17,11 +17,11 @@ APIs are built upon PHP 7.1
 
 IIS Server
 
-Library - <a href="https://github.com/niravmadariya/sharepay-api/blob/master/php/db_pdo.inc">db_pdo.inc</a> from <a href="https://github.com/bevhost/phplib/blob/master/inc/db_pdo.inc">db_pdo.inc</a> for database transactions 
+Library - <a href="https://github.com/niravmadariya/sharepay-api/blob/master/php/db_pdo.inc">db_pdo.inc</a> from <a href="https://github.com/niravmadariya/phplib/tree/master/inc/db_pdo.inc">db_pdo.inc</a> for database transactions (with custom updates) 
 
 ## Building the Project
 
-1. changes in php/local.inc - add your database connection parameter
+###1. changes in php/local.inc - add your database connection parameter
 ```
 var $Host     = "";
 var $Database = "";
@@ -33,12 +33,15 @@ var $charset  = "utf8";
 // Replace your own AES 256 Encryption key
 $_CONFIG["aes_enc_key"] = "Your AES 256 Key";
 
+// Replace your own AES 256 Encryption key (used by client app to encrypt data, differs from above key)
+$_CONFIG["aes_enc_client_key"]="Your Client AES 256 Encrytion key";
+
 // Replace with your own salt to encrypt data 
 $_CONFIG["crypto_provider_salt"] = "Your Encryption Salt";
 
 ```
 
-4. changes in Database - import users.sql
+###2. changes in Database - import users.sql
 
 #### For now this project only runs on IIS (soon there will be update with apache configurations)
 #### Also, for now there is only login API available, soon there will be an update for other APIs.
