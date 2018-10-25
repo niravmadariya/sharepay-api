@@ -21,7 +21,7 @@ Library - <a href="https://github.com/niravmadariya/sharepay-api/blob/master/php
 
 ## Building the Project
 
-###1. changes in php/local.inc - add your database connection parameter
+### 1. changes in php/local.inc - add your database connection parameter
 ```
 var $Host     = "";
 var $Database = "";
@@ -41,7 +41,7 @@ $_CONFIG["crypto_provider_salt"] = "Your Encryption Salt";
 
 ```
 
-###2. changes in Database - import users.sql
+### 2. changes in Database - import users.sql
 
 #### For now this project only runs on IIS (soon there will be update with apache configurations)
 #### Also, for now there is only login API available, soon there will be an update for other APIs.

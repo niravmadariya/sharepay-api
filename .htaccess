@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^api/signup/ api/signup.php [NC,L]
+RewriteRule ^api/login/ api/login.php [NC,L]
