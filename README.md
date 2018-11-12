@@ -10,7 +10,7 @@ APIs are created in core PHP (No Language Libraries used).
 ### Security 
 Not Storing any user data in raw format
 
-Created custom crypto provider class to encerypt data and also using AES256 encryption for encrypting some data.
+Created custom crypto provider class to encrypt some data, also using AES256 encryption for encrypting the other data.
 
 ## The stack & building from source 
 APIs are built upon PHP 7.1
@@ -43,10 +43,9 @@ $_CONFIG["crypto_provider_salt"] = "Your Encryption Salt";
 
 ### 2. changes in Database - import users.sql
 
-#### For now this project only runs on IIS (soon there will be update with apache configurations)
-#### Also, for now there is only login API available, soon there will be an update for other APIs.
+#### For now this project only runs on IIS and Apache.
 
-#### Show some :heart: and star the repo to support the project
+#### Show some :heart: and :star: the repo to support the project
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/niravmadariya/sharepay-api/blob/master/LICENSE)
 
