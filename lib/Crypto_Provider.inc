@@ -18,5 +18,17 @@ class Crypto_Provider{
         $aes->setKey($key2);
         return $aes->encrypt();
     }
+    // one way encryption provider
+    public static function aes_crypto_provider_enc($aes, $data, $key){
+        $aes->setData($data);
+        $aes->setKey($key);
+        return $aes->encrypt();
+    }
+    // one way decryption provider
+    public static function aes_crypto_provider_dec($aes, $data, $key){
+        $aes->setData($data);
+        $aes->setKey($key);
+        return $aes->decrypt();
+    }
 }
 ?>
