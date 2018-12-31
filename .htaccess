@@ -3,3 +3,4 @@ RewriteEngine On
 RewriteRule ^api/signup/ api/signup.php [NC,L]
 RewriteRule ^api/login/ api/login.php [NC,L]
 RewriteRule ^api/profile/ api/profile.php [NC,L]
+RewriteRule ^api/transact/ api/transact.php [NC,L]

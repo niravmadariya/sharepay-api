@@ -1,7 +1,5 @@
 <?php
-
-$json = file_get_contents("signupdata.json");
-//$json = file_get_contents("php://input");
+$json = file_get_contents("php://input");
 $data = json_decode($json,true);
 if(empty($data[0]["phonenumber"]) || $data[0]["phonenumber"] == null){
     return "Invalid Request";
@@ -80,5 +78,7 @@ $usr_data['hash'] = Crypto_Provider::encrypt($usr_data['phone_number'], "hash", 
 $encpass = Crypto_Provider::encrypt($aes->decrypt(),"password", $_CONFIG["crypto_provider_salt"]);
 $db = new DB_Api();
 if($db->query_bind("insert into users (`u_name`, `u_phoneno`, `u_email`, `u_passwrd`, `u_hash`) values(:u_name, :u_phoneno, :u_email, :u_passwrd, :u_hash)", array(':u_name' => $usr_data['name'], ':u_phoneno' => $usr_data['phone_number'], ':u_email' => $usr_data['email'], ':u_passwrd' => $usr_data['password'], ':u_hash' => $usr_data['hash'])))
-    echo "Sign up Successful, Please Login to the account";
+    echo json_encode("Sign up Successful, Please Login to the account");
+else
+    echo json_encode("Signup Failed, Please try again!");
 ?>

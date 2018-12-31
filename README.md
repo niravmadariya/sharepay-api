@@ -41,9 +41,16 @@ $_CONFIG["crypto_provider_salt"] = "Your Encryption Salt";
 
 ```
 
-### 2. changes in Database - import users.sql
+### 2. changes in Database - import users.sql and transaction.sql
+
+-------
+-------
 
 #### For now this project only runs on IIS and Apache.
+
+Help improving this project by solving the <a href="https://github.com/niravmadariya/sharepay-api/issues" target="_blank">issues</a> and listed <a href="https://github.com/niravmadariya/sharepay-api/projects/1" target="_blank">ToDo</a> items.
+
+-------
 
 #### Show some :heart: and :star: the repo to support the project
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)

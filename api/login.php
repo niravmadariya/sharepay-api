@@ -25,7 +25,7 @@ foreach($data as $key=>$value){
     $data[$key] = Crypto_Provider::aes_crypto_provider($aes, $value, $_CONFIG["aes_enc_key"], $_CONFIG["aes_enc_client_key"]);
 }
 if($data == "" || $data == null){
-    echo "Invalid Phone Number or Password";
+    echo json_encode("Invalid Phone Number or Password");
 }
 else {
     echo json_encode($data);
