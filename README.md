@@ -59,7 +59,7 @@ Help improving this project by solving the <a href="https://github.com/niravmada
 ## License
 
 ```
-Copyright 2018 Nirav Madariya
+Copyright 2021 Nirav Madariya
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
